@@ -10,6 +10,7 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -33,9 +34,9 @@ public class CreateImmersiveTacz
     // Create a Deferred Register to hold Blocks which will all be registered under the "examplemod" namespace
 
 
-    public CreateImmersiveTacz(FMLJavaModLoadingContext context)
+    public CreateImmersiveTacz()
     {
-        IEventBus modEventBus = context.getModEventBus();
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModCreativeModeTabs.register(modEventBus);
 
@@ -50,7 +51,7 @@ public class CreateImmersiveTacz
 
         modEventBus.addListener(this::addCreative);
 
-        context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
     }
 
