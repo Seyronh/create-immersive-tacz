@@ -2,16 +2,7 @@
 
 This project includes validators to verify the integrity and structure of all recipes in `src/main/resources/data/createimmersivetacz/recipes`.
 
-## Available Validators
-
-### 1. Python Validator (Recommended)
-
 **Location:** `validate_recipes.py`
-
-**Advantages:**
-- Fast and easy to run
-- No Gradle configuration required
-- Works with any Python 3.6+ version
 
 **Usage:**
 ```bash
@@ -21,25 +12,6 @@ python validate_recipes.py
 **Requirements:**
 - Python 3.6 or higher
 
-### 2. Java Validator (JUnit Test)
-
-**Location:** `src/test/java/net/myr/RecipeTest.java`
-
-**Advantages:**
-- Integrated with the project's test system
-- Uses JUnit 5
-- Runs as part of the project's tests
-
-**Usage:**
-```bash
-./gradlew test --tests RecipeTest
-```
-
-**Requirements:**
-- Java 17
-- Gradle properly configured
-
-> **Note:** If you have issues with the Java version, use the Python validator.
 
 ## Validated Recipe Types
 
@@ -154,15 +126,11 @@ There is a syntax error in the JSON file. Check:
 - UTF-8 encoding
 - No invalid special characters
 
-### Java Validator: "Unsupported class file major version"
-This error occurs when there is a mismatch between the compiled code's Java version and the Gradle version. Use the Python validator as an alternative.
-
 ## Contributing
 
 To add support for new recipe types:
 
-1. **Python**: Add a `validate_<type>` method in the `RecipeValidator` class
-2. **Java**: Add a `validate<Type>` method in the `RecipeTest` class
+1. Add a `validate_<type>` method in the `RecipeValidator` class
 3. Register the validator in the corresponding dictionary/switch
 4. Update this documentation
 
